@@ -11,6 +11,10 @@
           value-format="yyyy-MM-dd">
         </el-date-picker>
       </el-row>
+      <el-row>
+        <el-input placeholder="姓名" v-model="name"></el-input>
+        <el-input placeholder="手机号" v-model="phoneNum"></el-input>
+      </el-row>
       <el-row type="flex" :gutter="20" justify="center">
         <el-button type="danger" @click="generatePass()">生成出入证</el-button>
       </el-row>
@@ -33,6 +37,8 @@
                 <div class="box-info-add">北京中关村融汇金融信息服务有限公司</div>
               </div>
             </div>
+            <div class="box-info-name">{{ name }}</div>
+            <div class="box-info-phone">{{ phoneNum.replace(/^(\d{3})\d{4}(\d+)/,"$1****$2") }}</div>
             <div class="box-time">{{ selectedTime }}</div>
             <div class="box-pass"></div>
           </div>
@@ -57,6 +63,8 @@ export default {
       dateSelected:'',
       showPass: true,
       selectedTime:'',
+      name: '马骁博',
+      phoneNum: '13072096057'
     }
   },
   methods:{
@@ -148,7 +156,7 @@ a {
     height: 48px;
   }
   .box-inner{
-    padding: 0 24px;
+    padding: 0 20px;
   }
   .box-info{
     display: flex;
@@ -182,13 +190,36 @@ a {
     height: 17px;
     font-size: 12px;
     font-family: PingFangSC-Regular,PingFang SC;
-    font-weight: 400;
+    font-weight: 600;
     color: #fff;
     line-height: 17px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     display: -webkit-box;
+  }
+  .box-info-name{
+    min-height: 21px;
+    font-size: 13px;
+    font-family: PingFangSC-Medium,PingFang SC;
+    font-weight: 600;
+    color: #fff;
+    line-height: 21px;
+    margin: 14px 0 3px 56px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+  }
+  .box-info-phone{
+    width: 79px;
+    height: 21px;
+    font-size: 13px;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-weight: 600;
+    color: #fff;
+    line-height: 21px;
+    margin-left: 56px;
   }
   .box-time{
     width: 89px;
@@ -198,7 +229,7 @@ a {
     font-weight: 400;
     color: #fff;
     line-height: 43px;
-    margin: 24px 0 48px 56px;
+    margin: 17px 0 23px 56px;
   }
   .box-pass{
     width: 139px;
